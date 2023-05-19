@@ -61,7 +61,7 @@
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	<h4>
 		<i class="icon fas"></i>Info</h4>
-	<h3>Anda sudah menggukan Hak Suara dengan baik, Terimakasih.</h3>
+	<h3>Anda sudah menggunakan Hak Suara dengan baik, Terimakasih.</h3>
 </div>
 
 <?php }  
