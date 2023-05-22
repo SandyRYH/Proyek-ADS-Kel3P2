@@ -15,8 +15,6 @@
 
     
     include "inc/koneksi.php";
-    //FUNGSI RUPIAH
-    include "inc/rupiah.php";
 ?>
 
 <!DOCTYPE html>
