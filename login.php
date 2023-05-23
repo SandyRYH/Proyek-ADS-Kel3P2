@@ -1,36 +1,41 @@
 <?php
 session_start();
 
-class Database
-{
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $database = "e-voting1";
-    protected $connection;
-
-    public function __construct()
-    {
-        $this->connection = $this->createConnection();
-    }
-
-    private function createConnection()
-    {
-        $conn = new mysqli($this->host, $this->username, $this->password, $this->database);
-        if ($conn->connect_error) {
-            die("Koneksi gagal: " . $conn->connect_error);
-        }
-        return $conn;
-    }
-}
-
 include_once 'inc/koneksi.php';
 
-class LoginPage extends Database
+class Login extends DBConnection
 {
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function loginUser($username, $password)
+    {
+        $username = mysqli_real_escape_string($this->connection, $username);
+        $password = mysqli_real_escape_string($this->connection, $password);
+
+        $sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username' AND password='$password'";
+        $query_login = mysqli_query($this->connection, $sql_login);
+        $data_login = mysqli_fetch_array($query_login, MYSQLI_ASSOC);
+        $jumlah_login = mysqli_num_rows($query_login);
+
+        if ($jumlah_login == 1) {
+            // Set session
+            $_SESSION["ses_id"] = $data_login["id_pengguna"];
+            $_SESSION["ses_nama"] = $data_login["nama_pengguna"];
+            $_SESSION["ses_username"] = $data_login["username"];
+            $_SESSION["ses_password"] = $data_login["password"];
+            $_SESSION["ses_level"] = $data_login["level"];
+            $_SESSION["ses_status"] = $data_login["status"];
+            $_SESSION["ses_jenis"] = $data_login["jenis"];
+
+            // Redirect ke halaman index.php setelah login berhasil
+            header("Location: index.php");
+            exit();
+        } else {
+            $errorMessage = "Login Gagal";
+        }
     }
 
     public function displayLoginPage()
@@ -43,30 +48,10 @@ class LoginPage extends Database
         }
 
         if (isset($_POST['btnLogin'])) {
-            $username = mysqli_real_escape_string($this->connection, $_POST['username']);
-            $password = mysqli_real_escape_string($this->connection, $_POST['password']);
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-            $sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username' AND password='$password'";
-            $query_login = mysqli_query($this->connection, $sql_login);
-            $data_login = mysqli_fetch_array($query_login, MYSQLI_ASSOC);
-            $jumlah_login = mysqli_num_rows($query_login);
-
-            if ($jumlah_login == 1) {
-                // Set session
-                $_SESSION["ses_id"] = $data_login["id_pengguna"];
-                $_SESSION["ses_nama"] = $data_login["nama_pengguna"];
-                $_SESSION["ses_username"] = $data_login["username"];
-                $_SESSION["ses_password"] = $data_login["password"];
-                $_SESSION["ses_level"] = $data_login["level"];
-                $_SESSION["ses_status"] = $data_login["status"];
-                $_SESSION["ses_jenis"] = $data_login["jenis"];
-
-                // Redirect ke halaman index.php setelah login berhasil
-                header("Location: index.php");
-                exit();
-            } else {
-                $errorMessage = "Login Gagal";
-            }
+            $this->loginUser($username, $password);
         }
         ?>
 
@@ -163,6 +148,6 @@ class LoginPage extends Database
     }
 }
 
-$loginPage = new LoginPage();
-$loginPage->displayLoginPage();
+$login = new Login();
+$login->displayLoginPage();
 ?>
