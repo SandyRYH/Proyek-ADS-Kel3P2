@@ -70,8 +70,10 @@ class Pemilih extends DBConnection
                     }
                 })</script>";
             }
-        }
+         }
     }
+        
+    
 
     public function hapusPemilih($id_pengguna)
     {

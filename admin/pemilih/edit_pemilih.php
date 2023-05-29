@@ -62,3 +62,21 @@ if (isset($_POST['Ubah'])) {
     $pemilih->editPemilih();
 }
 ?>
+
+<script type="text/javascript">
+    function change()
+    {
+    var x = document.getElementById('pass').type;
+
+    if (x == 'password')
+    {
+        document.getElementById('pass').type = 'text';
+        document.getElementById('mybutton').innerHTML;
+    }
+    else
+    {
+        document.getElementById('pass').type = 'password';
+        document.getElementById('mybutton').innerHTML;
+    }
+    }
+</script>
