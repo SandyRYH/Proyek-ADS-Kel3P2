@@ -1,5 +1,5 @@
 <?php
-
+    require_once 'Pemilih.php';
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM tb_pengguna WHERE id_pengguna='".$_GET['kode']."'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
