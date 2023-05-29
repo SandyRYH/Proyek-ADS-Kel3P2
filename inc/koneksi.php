@@ -21,7 +21,12 @@ class DBConnection {
     public function query($sql) {
         return $this->connection->query($sql);
     }
+
+    public function multiQuery($sql) {
+        return $this->connection->multi_query($sql);
+    }
 }
 
 $koneksi = new DBConnection();
 $connection = $koneksi->connection;
+?>
