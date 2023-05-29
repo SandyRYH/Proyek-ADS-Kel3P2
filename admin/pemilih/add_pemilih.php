@@ -1,7 +1,5 @@
 <?php 
-	//membuat acak angka
 	require_once 'Pemilih.php';
-	$pass_acak = mt_rand(1000, 9999);
 ?>
 
 <div class="card card-primary">
