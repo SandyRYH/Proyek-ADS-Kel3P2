@@ -1,8 +1,8 @@
 <?php
-
+	require_once 'inc/koneksi.php';
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM tb_calon WHERE id_calon='".$_GET['kode']."'";
-        $query_cek = mysqli_query($koneksi, $sql_cek);
+        $query_cek = mysqli_query($connection, $sql_cek);
 		$data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
 		
 		$kode=$_GET['kode'];

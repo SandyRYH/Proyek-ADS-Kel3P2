@@ -8,8 +8,8 @@ $data_id = $_SESSION["ses_id"];
         $sql_simpan .= "UPDATE tb_pengguna set 
 			status='0'
 			WHERE id_pengguna='".$data_id."'";
-        $query_simpan = mysqli_multi_query($koneksi, $sql_simpan);
-		mysqli_close($koneksi);
+        $query_simpan = mysqli_multi_query($connection, $sql_simpan);
+		mysqli_close($connection);
 		
 		if ($query_simpan) {
 			echo "<script>
