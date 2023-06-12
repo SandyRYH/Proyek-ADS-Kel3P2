@@ -3,7 +3,8 @@
 Aplikasi E-Voting hadir untuk membantu memfasilitasi voting secara elektronik dan online, aplikasi ini dapat digunakan dimana saja dan proses pemilihan berjalan dengan aman
 
 
-Tugas Akhir Analisis Desain dan Sistem
+Tugas Akhir Analisis Desain dan Sistem 
+P2 - Kelompok 3
 
 |   NIM    |           Nama           |     Tugas      |
 |:--------:|:------------------------:|:--------------:|
