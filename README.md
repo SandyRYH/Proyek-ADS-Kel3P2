@@ -10,5 +10,5 @@ P2 - Kelompok 3
 |:--------:|:------------------------:|:--------------:|
 |G6401201098|    Azka Lazuardi Farghani|    Back End    |
 |G6401201024|      Agil Munawar        |   Front End    |
-|G6401201057| Nauval Helmy Cahya       |    Back End    |
+|G6401201057| Nauval Helmy Calya       |    Back End    |
 |G6401201026| Sandy Reynaldo Yanuarda Haulussy| Project Manager|
